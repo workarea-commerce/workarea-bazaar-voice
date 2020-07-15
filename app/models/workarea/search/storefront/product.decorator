@@ -1,0 +1,7 @@
+module Workarea
+  decorate Search::Storefront::Product, with: :bazaar_voice do
+    def sorts
+      super.merge(rating: model.rating.to_f)
+    end
+  end
+end

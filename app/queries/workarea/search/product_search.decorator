@@ -1,0 +1,12 @@
+module Workarea
+  decorate Search::ProductSearch, with: :bazaar_voice do
+    class_methods do
+      def available_sorts
+        super.tap do |sorts|
+          sorts << Sort.highest_rating
+          sorts << Sort.lowest_rating
+        end
+      end
+    end
+  end
+end

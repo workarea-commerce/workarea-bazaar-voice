@@ -1,0 +1,14 @@
+require 'test_helper'
+
+module Workarea
+  decorate Search::Storefront::ProductTest, with: :bazaar_voice do
+    def test_rating_gets_sorting_score_from_reviews_service
+      product = Catalog::Product.new(rating: 5)
+
+      assert_equal(
+        5,
+        Search::Storefront::Product.new(product).sorts[:rating]
+      )
+    end
+  end
+end

@@ -1,0 +1,12 @@
+module Workarea
+  decorate Catalog::Product, with: :bazaar_voice do
+    decorated do
+      field :rating, type: Float
+
+      scope :bazaar_voice_exportable,
+        -> { where :updated_at.gte => BazaarVoice.config.export_interval.ago, active: true }
+
+      index updated_at: -1
+    end
+  end
+end

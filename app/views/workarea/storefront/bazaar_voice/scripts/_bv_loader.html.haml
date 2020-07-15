@@ -1,0 +1,5 @@
+- if Workarea::BazaarVoice.using_conversations?
+  %script{ async: '', src: bazaar_voice_js_url }
+
+- else # BV Loader script for PRR clients
+  %script{ async: '', src: bazaar_voice_js_url, data: { bv_display_code: Workarea::BazaarVoice.config.display_code.presence, bv_hostname: Workarea::BazaarVoice.config.hostname.presence } }

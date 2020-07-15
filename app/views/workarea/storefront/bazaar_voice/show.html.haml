@@ -1,0 +1,13 @@
+- content_for :head do
+  %link{ href: bazaar_voice_cannonical_url, rel: 'canonical' }
+
+%script{ type: "text/javascript", src: bazaar_voice_js_url, data: { bv_display_code: Workarea::BazaarVoice.config.display_code.presence, bv_hostname: Workarea::BazaarVoice.config.hostname.presence } }
+
+- unless Workarea::BazaarVoice.using_conversations?
+  :javascript
+    $BV.ui("rr", "show_reviews", {
+      productId: "#{@product.bv_product_id}"
+    });
+
+
+  #BVSubmissionContainer

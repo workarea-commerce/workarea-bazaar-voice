@@ -1,0 +1,5 @@
+- if !Workarea::BazaarVoice.using_conversations? && !Rails.env.test?
+  :javascript
+    $BV.configure("global", {
+      submissionContainerUrl: "#{bazaar_voice_container_page_url(@product.id)}"
+    });

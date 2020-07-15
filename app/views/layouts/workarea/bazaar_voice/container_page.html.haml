@@ -1,0 +1,26 @@
+!!!
+/
+  Platform: Workarea Ecommerce
+  Web:      http://workarea.com
+  Email:    sales@workarea.com
+  Phone:    215-925-1800
+
+%html{ lang: 'en' }
+  %head
+    %meta{ charset: 'utf-8' }
+    %title
+    %meta{ property: 'locale', content: I18n.locale }
+    %meta{ property: 'robots', content: 'noindex, nofollow' }
+
+    - unless Workarea::BazaarVoice.using_conversations?
+      %meta{ name: 'bv:pageType', content: 'container' }
+
+    - if Workarea::BazaarVoice.requires_login?
+      %meta{ name: 'bv:userToken', content: @bv_user.token }
+
+    = alternate_locales_tags
+    = render 'workarea/storefront/favicons/tags'
+    = yield :head
+
+  %body
+    = yield

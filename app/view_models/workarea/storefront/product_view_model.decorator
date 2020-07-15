@@ -1,0 +1,7 @@
+module Workarea
+  decorate Storefront::ProductViewModel, with: :bazaar_voice do
+    def bv_product_id
+      id.to_s
+    end
+  end
+end
